@@ -36,17 +36,20 @@ class Project:
             self.Status = "Completed"
 
     def show_status(self):
-        count = 0
-        for m in self.milestones:
-            if m["completed"] == True:
-                count += 1
+        if len(self.milestones) == 0:
+            print("Progress: 0%")
+        else:
+            count = 0
+            for m in self.milestones:
+                if m["completed"] == True:
+                    count += 1
 
-        percentage = (count / len(self.milestones)) * 100
-        print("Project:", self.project_name)
-        print("Freelancer:", self.freelancer_name)
-        print("Deadline:", self.Deadline)
-        print("Status:", self.Status)
-        print("Progress:", str(round(percentage, 2)) + "%")
+            percentage = (count / len(self.milestones)) * 100
+            print("Project:", self.project_name)
+            print("Freelancer:", self.freelancer_name)
+            print("Deadline:", self.Deadline)
+            print("Status:", self.Status)
+            print("Progress:", str(round(percentage, 2)) + "%")
 
 def save_project(project):
     data = {
