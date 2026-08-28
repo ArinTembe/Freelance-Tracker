@@ -1,3 +1,5 @@
+import json 
+
 class User:
     def __init__(self, name, email, role):
         self.name = name
@@ -45,6 +47,19 @@ class Project:
         print("Deadline:", self.Deadline)
         print("Status:", self.Status)
         print("Progress:", str(round(percentage, 2)) + "%")
+
+def save_project(project):
+    data = {
+        "project_name": project.project_name,
+        "client_name": project.client_name,
+        "freelancer_name": project.freelancer_name,
+        "Deadline": project.Deadline,
+        "Status": project.Status,
+        "milestones": project.milestones
+    }
+    with open("project_data.json", "w") as f:
+        json.dump(data, f)
+    print("Project saved successfully!")
             
 
 while True:
