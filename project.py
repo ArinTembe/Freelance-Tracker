@@ -1,84 +1,87 @@
-import qrcode
-from PIL import Image, ImageDraw, ImageFont
-
-class Employee:
-    def __init__(self, name, department, emergencycontact, employee_id):
+class User:
+    def __init__(self, name, email, role):
         self.name = name
-        self.department = department
-        self.emergencycontact = emergencycontact
-        self.employee_id = employee_id
+        self.email = email
+        self.role = role
 
+user1 = User("John", "johndoe@gmail.com", "Freelancer")
+user2 = User("Rahul", "rahul@gmail.com", "Client")
 
-employee1 = Employee(
-    "ARIN",
-    "IT",
-    "6455342967",
-    "ANP156"
-)
+class Project:
+    def __init__(self, project_name, client_name, freelancer_name, Deadline):
+        self.project_name = project_name
+        self.client_name = client_name
+        self.freelancer_name = freelancer_name
+        self.Deadline = Deadline
+        self.Status = "Not Started"
+        self.milestones = []
 
+    def add_milestones(self, name, amount):
+        self.milestones.append({"name": name, "amount": amount, "completed": False})
 
-qr_data = (
-    "Name: " + employee1.name + "\n" +
-    "Employee ID: " + employee1.employee_id + "\n" +
-    "Department: " + employee1.department + "\n" +
-    "Emergency Contact: " + employee1.emergencycontact
-)
+    def complete_milestone(self, name):
+        for m in self.milestones:
+            if m["name"] == name:
+                m["completed"] = True
+                self.Status = "In Progress"
+                break
+        count = 0
+        for m in self.milestones:
+            if m["completed"] == True:
+                count += 1
+    
+        if count == len(self.milestones):
+            self.Status = "Completed"
 
+    def show_status(self):
+        count = 0
+        for m in self.milestones:
+            if m["completed"] == True:
+                count += 1
 
-qr = qrcode.make(qr_data)
+        percentage = (count / len(self.milestones)) * 100
+        print("Project:", self.project_name)
+        print("Freelancer:", self.freelancer_name)
+        print("Deadline:", self.Deadline)
+        print("Status:", self.Status)
+        print("Progress:", str(round(percentage, 2)) + "%")
+            
 
-qr.save("employee_info.png")
+while True:
+    print("\nWelcome to FreelanceTracker")
+    print("1. Create Project")
+    print("2. Add Milestone")
+    print("3. Complete Milestone")
+    print("4. Show Status")
+    print("5. Exit")
+    
+    choice = input("Choose an option: ")
+    
+    if choice == "1":
+        name = input("Enter project name: ")
+        client = input("Enter client name: ")
+        freelancer = input("Enter freelancer name: ")
+        deadline = input("Enter deadline: ")
+        project = Project(name, client, freelancer, deadline)
+        print("Project created successfully!")
 
-badge = Image.new("RGB", (600, 800), "white")
+    elif choice == "2":
+        milestone_name = input("Enter milestone name: ")
+        amount = int(input("Enter amount: "))
+        project.add_milestones(milestone_name, amount)
+        print("Milestone added!")
 
-draw = ImageDraw.Draw(badge)
+    elif choice == "3":
+        milestone_name = input("Enter milestone name: ")
+        project.complete_milestone(milestone_name)
+        print("Milestone completed!")
 
-qr_image = Image.open("employee_info.png")
-qr_image = qr_image.resize(( 300, 300))
+    elif choice == "4":
+        project.show_status()
 
-qr_x = int((badge.width - qr_image.width) / 2)
-
-qr_y = 300 
-badge.paste(qr_image, (qr_x, qr_y))
-
-draw.rectangle((10, 10, 590, 790), outline="black", width=5)
-
-draw.line((50, 285, 550, 285), fill="black", width=2)
-
-badge.save("employee1_badge.png")
-
-font = ImageFont.truetype("BASKVILL.TTF", 40)
-
-text_box = draw.textbbox((0, 0), employee1.name, font=font)
-
-text_width = text_box[2] - text_box[0]
-
-x_coordinate = int((600 - text_width) / 2)
-
-draw.text(
-    (x_coordinate, 100),
-    employee1.name,
-    font=font,
-    fill="black"
-)
-badge.save("employee1_badge.png")
-
-id_box = draw.textbbox((0, 0), employee1.employee_id, font=font)
-id_width = id_box[2] - id_box[0]
-id_x_coordinate = int((600 - id_width) /2 )
-draw.text((id_x_coordinate, 160), employee1.employee_id, font=font, fill="black")
-badge.save("employee1_badge.png")
-
-department_box = draw.textbbox((0, 0), employee1.department, font=font)
-department_width = department_box[2] - department_box[0]
-department_x_coordinate = int((600 - department_width) / 2)
-draw.text((department_x_coordinate, 220), employee1.department, font=font, fill="black")
-badge.save("employee1_badge.png")
-
-title_font = ImageFont.truetype("C:/Windows/Fonts/BRITANIC.TTF", 50)
-title_box = draw.textbbox((0, 0), "Employee Badge", font=title_font)
-title_width = title_box[2] - title_box[0]
-
-title_x = int((badge.width - title_width) / 2)
-draw.text((title_x, 20), "EMPLOYEE BADGE", font=title_font, fill="black")
-badge.save("employee1_badge.png")
+    elif choice == "5":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid option. Please try again.")
+    
