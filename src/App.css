@@ -1,0 +1,256 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #FFFCF5;
+    color: #1a1a1a;
+    font-family: Arial, sans-serif;
+}
+ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  width: 93%;
+  justify-content: right;
+  margin-top: 5px;
+  color: #121212;
+}
+nav h1{
+  font-size: 36px;
+    
+  align-items: center;
+    color:#1a1a1a;
+    margin-left: 20px;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+nav a {
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 10px;
+  color: rgb(66, 169, 198);
+}
+.cards{
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  width: 96%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+  
+}
+.dashboard{
+  border-radius: 10px;
+  
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  max-width: 1400px;
+  margin: 50px auto;
+    margin-top: 70px;
+    text-align: center;
+}
+.dashboard::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    /*background: radial-gradient(circle, rgba(90, 60, 200, 0.25), transparent 50%);*/
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+.dashboard-sections {
+    display: flex;
+    gap: 20px;
+    width: 96%;
+    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    border-color:#121212;
+}
+.Active {
+  color: black;
+   
+  
+}
+.Completed{ 
+  color: black;
+  
+  
+  
+}
+.Deadlines{
+  color: black;
+  
+  
+  
+}
+.freelancercard {
+    text-align: left;
+    padding: 20px;
+    border: 2px solid #121212;
+    margin-top: 30px;
+    border-radius: 10px;
+    flex: 1;
+    width: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(9, 9, 12, 0.8);
+}
+.freelancercard h3 {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+}
+.projectprogress h3 {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+}
+
+.freelancer-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.freelancer-info p {
+    margin: 0;
+}
+
+.freelancer-name {
+    font-weight: bold;
+}
+.projectprogress {
+    margin-top: 30px;
+    padding: 20px;
+    border: 3px solid rgb(11, 10, 10);
+    border-radius: 10px;
+    text-align: left;
+    flex: 1;
+    width: 0;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(30, 30, 36, 0.8);
+}
+.progress-bar {
+  width: 70%;
+  height: 10px;
+  background: #9696aa;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px auto;
+}
+.progress-fill {
+  width: 72%;
+  height: 100%;
+  background: #454550;
+  border-radius: 10px;
+}
+
+.projectprogress h3 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+}
+.deadlines-section {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(180, 155, 155, 0.08);
+  border-radius: 12px;
+  background: rgba(147, 107, 107, 0.03);
+  text-align: center;
+}
+.recent-activity {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  text-align: center ;
+  
+}
+.bottom-sections {
+  display: flex;
+  gap: 20px;
+  width: 96%;
+  margin: 20px auto;
+  margin-top: 20px;
+  flex: 1;
+}
+.cards p{
+   font-size: 42px;
+  font-weight: 700;
+  margin: 8px 0 0;
+  font-family: Anton;
+  
+  
+}
+.cards h3{
+    font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.cards{
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    gap: 40px;
+    margin-top: 20px;
+
+}
+.card {
+  height: 150px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(4, 0, 0, 0.04);
+  border: 1.5px solid #121212;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+   position: relative;
+  overflow: hidden;
+  background: #bbb7b7f5;
+  box-shadow: 2px 2px 10px #121212;
+}
+
+.dashboard h2 {
+  margin-bottom: 8px;
+  text-decoration: bold;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.dashboard > p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  color: #403d3d;
+}
+.h1{
+  color: #6d54d1;
+  text-align: center;
+}
+.freelancercard,
+.projectprogress,
+.deadlines-section,
+.recent-activity {
+    background: rgba(83, 78, 78, 0.28);
+    border: 1px solid rgba(61, 0, 214, 0.18);
+}
+.recent-activity h3,
+.deadlines-section h3 {
+  text-decoration: bold;
+  font-size: 22px;
+}
